@@ -198,3 +198,22 @@ The dots in the image above follow a clear pattern; they're exactly
 grid-aligned, and we should be able to emit points along that grid rather than
 relying on the printer to map into it. The first thing to do is [figure out what
 the printer's native resolution actually is](native-resolution.ps).
+
+![image](images/native-resolution-detail.jpg)
+
+I believe that's a 180DPI aliasing resolution.
+
+I'm going to change the settings again:
+
+- Document type: CAD
+- Screen: normal
+- Samsung color management: standard
+- Trapping: normal (shouldn't matter since it's monochrome)
+
+Now I'm seeing 90, 140, and 190 as interference patterns. There appears to be a
+perfect intersection at 140.
+
+**Update:** OK, I've figured this out. Anytime you render lines that aren't
+completely white or black, it dithers at its internal resolution, which is close
+to 200DPI. 600DPI is still the native resolution, and anything we draw from
+PostScript is dithered correctly if we set the line width to one native pixel.
