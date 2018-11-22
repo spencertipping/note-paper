@@ -27,6 +27,10 @@ few things:
 3. Sequence indicators so notes are chronologically ordered
 
 
+## Development notes
+- [Initial printer calibration](calibration.md)
+
+
 ## Section markers
 We need something that (1) the computer can read, and (2) I wouldn't draw by
 hand into my notes. It should be self-aligning and tolerate some rotation and
