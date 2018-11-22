@@ -15,10 +15,10 @@
 
 % NB: printer uses different dithering rates for horizontal/vertical lines.
 % These two shades appear identical.
-0.79  setgray 0 1 vcells {cell hline} for
+0.788 setgray 0 1 vcells {cell hline} for
 0.785 setgray 0 1 hcells {cell vline} for
 
-/chsize {0.2 cell}     def
+/chsize {0.15 cell}    def
 /choff  {chsize 2 div} def
 /crosshair
 {                                       % x y
@@ -28,11 +28,11 @@
   choff add lineto                      %
 } def
 
-0.75 setgray
+0.762 setgray
 newpath
 
-0 4 cell 8.5 inch {                     % x
-  0 4 cell 11 inch {                    % x y
+0 1 cell 8.5 inch {                     % x
+  0 1 cell 11 inch {                    % x y
     1 index 1 index crosshair
     pop
   } for
