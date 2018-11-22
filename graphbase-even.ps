@@ -1,0 +1,20 @@
+%!PS
+% Just like graphbase, but with even shading for h/vlines.
+
+/inch       {72 mul} def
+/cell {inch 0.2 mul} def
+
+/hcells {8.5 5 mul} def
+/vcells {11  5 mul} def
+
+/vline { newpath dup 0      moveto 11  inch      lineto stroke } def
+/hline { newpath dup 0 exch moveto 8.5 inch exch lineto stroke } def
+
+72 600 div setlinewidth
+
+% NB: printer uses different dithering rates for horizontal/vertical lines.
+% These two shades appear identical.
+0.79  setgray 0 1 vcells {cell hline} for
+0.785 setgray 0 1 hcells {cell vline} for
+
+showpage
