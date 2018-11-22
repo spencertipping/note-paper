@@ -1,0 +1,43 @@
+%!PS
+% Just like graphbase, but this time with light shading and crosshairs. We're
+% using grayscale to leverage printer dithering.
+
+/inch       {72 mul} def
+/cell {inch 0.2 mul} def
+
+/hcells {8.5 5 mul} def
+/vcells {11  5 mul} def
+
+/vline { newpath dup 0      moveto 11  inch      lineto stroke } def
+/hline { newpath dup 0 exch moveto 8.5 inch exch lineto stroke } def
+
+72 600 div setlinewidth
+
+% NB: printer uses different dithering rates for horizontal/vertical lines.
+% These two shades appear identical.
+0.79  setgray 0 1 vcells {cell hline} for
+0.785 setgray 0 1 hcells {cell vline} for
+
+/chsize {0.2 cell}     def
+/choff  {chsize 2 div} def
+/crosshair
+{                                       % x y
+  1 index choff sub 1 index moveto      % x y
+  1 index choff add 1 index lineto      % x y
+  1 index 1 index choff sub moveto      % x y
+  choff add lineto                      %
+} def
+
+0.75 setgray
+newpath
+
+0 4 cell 8.5 inch {                     % x
+  0 4 cell 11 inch {                    % x y
+    1 index 1 index crosshair
+    pop
+  } for
+  pop
+} for
+stroke
+
+showpage

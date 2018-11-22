@@ -12,10 +12,10 @@
 /vline { newpath dup 0      moveto 11 inch       lineto stroke } def
 /hline { newpath dup 0 exch moveto 8.5 inch exch lineto stroke } def
 
-0.01 setlinewidth
-0.9  setgray
+72 600 div setlinewidth
+0.9        setgray
 
-0 1 hcells {cell vline} for
-0 1 vcells {cell hline} for
+0 1 hcells {dup hcells div 0.05 mul 0.75 add setgray cell vline} for
+0 1 vcells {dup vcells div 0.05 mul 0.75 add setgray cell hline} for
 
 showpage
