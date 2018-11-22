@@ -1,0 +1,21 @@
+%!PS
+% Super-simple graph lines to see what kind of coverage I can get from the
+% printer. These are 0.2in cells with no extra markings, and it's designed for
+% 8.5x11in paper.
+
+/inch       {72 mul} def
+/cell {inch 0.2 mul} def
+
+/hcells {8.5 5 mul} def
+/vcells {11  5 mul} def
+
+/vline { newpath dup 0      moveto 11 inch       lineto stroke } def
+/hline { newpath dup 0 exch moveto 8.5 inch exch lineto stroke } def
+
+0.1 setlinewidth
+0.5 setgray
+
+0 1 hcells {cell vline} for
+0 1 vcells {cell hline} for
+
+showpage
