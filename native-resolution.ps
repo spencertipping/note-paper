@@ -1,0 +1,40 @@
+%!PS
+% A test pattern to discover the printer's native resolution using interference
+% mapping. We print a bunch of small lines to discover the set of factors that
+% comprise the native resolution.
+
+0.2 setlinewidth
+0.8 setgray
+
+% y dpi hbar: print a line of dots across the page at the specified DPI and
+% vertical offset. Lines are 1pt tall.
+/hbar
+{                                       % y dpi
+  dup 72 exch div                       % y dpi Δx
+  newpath
+  0 exch 8.5 82 mul                     % y dpi 0 Δx width
+  {                                     % y dpi x
+    dup 3 index moveto                  % y dpi x
+    2 index 1 add lineto                % y dpi
+  } for                                 % y dpi
+  stroke
+  pop pop
+} def
+
+/group                                  % y start-dpi
+{
+  0 1 9
+  {                                     % y start-dpi i
+    dup 3 index add                     % y start-dpi i y'
+    exch 2 index add                    % y start-dpi y' dpi'
+    hbar                                % y start-dpi
+  } for
+  pop pop
+} def
+
+10 10 720
+{
+  dup 1.1 mul 10 sub exch group
+} for
+
+showpage
